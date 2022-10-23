@@ -17,3 +17,6 @@ export const H1 = styled.h1`
       line-height: 29px;
     `}
 `;
+export const P = styled.p`
+  color: white;
+`;
