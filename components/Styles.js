@@ -13,3 +13,8 @@ export const BoxHome = styled.div`
 export const BoxHomeWrapper = styled.div`
   padding: 40px;
 `;
+export const CenterItems = styled.div`
+  align-items: center;
+  text-align: center;
+  padding: 20px;
+`

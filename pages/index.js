@@ -15,6 +15,7 @@ import Spacer from '../components/Spacer';
 import { Box } from '../components/Box';
 import { InputBox } from '../components/InputBox';
 import { H1, P } from '../components/TypoGraphy';
+import { CardBox } from '../components/Card';
 const menu = [
   { text: 'Featured' },
   {
@@ -112,7 +113,28 @@ export default function Home() {
             </BoxHomeWrapper>
           </Box>
           <Box width={'20%'} height={'100%'} title='hello'>
-            hello{' '}
+            <CardBox
+              chat='11'
+              discription='is watching the game'
+              number='48'
+              percentage='💒 Marry me tommy!'
+              name='Kinera'
+              points='20'
+              time='12'
+            />
+
+            <hr />
+            <Spacer />
+
+            <CardBox
+              chat='11'
+              discription='is watching the game'
+              number='48'
+              percentage='💒 Marry me tommy!'
+              name='Kinera'
+              points='20'
+              time='12'
+            />
           </Box>
           {/* <InputBox width='60%'>
             <H1>Heloo</H1>
