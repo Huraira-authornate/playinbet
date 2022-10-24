@@ -34,6 +34,8 @@ const teams = [
     looser: 'Monterial',
     tm2: 'Canadial',
     score2: '14-1',
+    win: 'Wild Win',
+    percentage: '23%',
   },
   {
     winer: 'MINTOSA',
@@ -42,6 +44,8 @@ const teams = [
     looser: 'Monterial',
     tm2: 'Canadial',
     score2: '14-1',
+    win: 'Wild Win',
+    percentage: '23%',
   },
 ];
 const match = [
@@ -83,7 +87,13 @@ export default function Home() {
                     </div>
                   </InputBox>
                   <InputBox width='48%'>
-                    <H3>Create Bet</H3>
+                    <H3
+                      onClick={() => {
+                        setBet(!bet), setPick(!pick);
+                      }}
+                    >
+                      Create Bet
+                    </H3>
                     <div style={{ display: 'flex', alignItems: 'center' }}>
                       <Image
                         // width={'16px'}
@@ -122,7 +132,10 @@ export default function Home() {
                             </P>
                           </div>
                         </div>
-                        <InputBox>hello</InputBox>
+                        <InputBox width={'30%'}>
+                          <H3>{item.win}</H3>
+                          <H3 green>{item.percentage}</H3>
+                        </InputBox>
                       </MainHome>
                       <MainHome style={{ marginBottom: '30px' }}>
                         <div style={{ display: 'flex' }}>
@@ -145,7 +158,10 @@ export default function Home() {
                             </P>
                           </div>
                         </div>
-                        <InputBox>hello</InputBox>
+                        <InputBox width={'30%'}>
+                          <H3>{item.win}</H3>
+                          <H3 green>{item.percentage}</H3>
+                        </InputBox>
                       </MainHome>
                       <HorizontalBar />
                     </div>
@@ -356,18 +372,6 @@ export default function Home() {
           {frame && (
             <Box width={'60%'} title='Pick the Player/Team'>
               <BoxHomeWrapper>
-                {/* <BoxHome>
-                  <InputBox width='40%'>
-                    <H1>Heloo</H1>
-                    <H1>Heloo</H1>
-                  </InputBox>
-                  <InputBox width='40%'>
-                    <H1>Heloo</H1>
-                    <H1>Heloo</H1>
-                  </InputBox>
-                </BoxHome>
-                <Spacer />
-                <HorizontalBar  /> */}
                 {match.map((item, index) => {
                   return (
                     <>
@@ -378,7 +382,6 @@ export default function Home() {
                             <div>
                               <H1>{item.text}</H1>
                             </div>
-                            {/* <InputBox>hello</InputBox> */}
                           </MainHome>
                         </div>
                         <div>

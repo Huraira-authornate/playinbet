@@ -49,4 +49,12 @@ export const H3 = styled.h3`
   line-height: 19px;
   margin-top: 4px;
   color: rgba(255, 255, 255, 0.6);
+  ${(props) =>
+    props.green &&
+    css`
+      color: #cef458;
+      font-weight: 700;
+      font-size: 18px;
+      line-height: 22px;
+    `}
 `;
