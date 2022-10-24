@@ -3,13 +3,18 @@ import styled from 'styled-components';
 const InputWrapper = styled.div`
   display: flex;
   justify-content: space-between;
-  padding: 10px;
+  padding: ${(props) => (props.padding ? props.padding : '11px 24px')};
   width: ${(props) => (props.width ? props.width : 'auto')};
-  height: 70px;
-  background-color: red;
-  border-radius: 20px;
+  height: 48px;
+  background: #262626;
+  border-radius: 100px;
+  cursor: pointer;
 `;
 
-export function InputBox({ children, width }) {
-  return <InputWrapper width={width}>{children}</InputWrapper>;
+export function InputBox({ children, width, padding }) {
+  return (
+    <InputWrapper padding={padding} width={width}>
+      {children}
+    </InputWrapper>
+  );
 }
