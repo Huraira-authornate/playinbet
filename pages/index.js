@@ -7,6 +7,7 @@ import {
   BoxHomeWrapper,
   MainHome,
   Wrapper,
+  CenterItems,
 } from '../components/Styles';
 import { Navbar } from '../components/Navbar';
 import styles from '../styles/Home.module.css';
@@ -14,12 +15,12 @@ import { Sidebar } from '../components/Sidebar';
 import Spacer from '../components/Spacer';
 import { Box } from '../components/Box';
 import { InputBox } from '../components/InputBox';
-
-
+import { HorizontalBar } from '../components/HorizintalBar';
+import { BorderBox } from '../components/Card';
 import { CardBox } from '../components/Card';
-
+import { Button } from '../components/Button';
 import { H1, H3, P, H2 } from '../components/TypoGraphy';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 const menu = [
   { text: 'Featured' },
@@ -62,11 +63,20 @@ const match = [
 ];
 
 export default function Home() {
-  const [bet, setBet] = useState(true);
+  const [mounted, setMounted] = useState(false);
+  const [bet, setBet] = useState(false);
   const [pick, setPick] = useState(false);
-  const [team, setTeam] = useState(false);
+  const [team, setTeam] = useState(true);
   const [event, setEvent] = useState(false);
   const [frame, setFrame] = useState(false);
+  const [final, setFinal] = useState(false);
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  if (!mounted) {
+    return null;
+  }
   return (
     <Wrapper>
       <Container>
@@ -224,7 +234,6 @@ export default function Home() {
                                 </span>
                               </H2>
                             </div>
-                            {/* <InputBox>hello</InputBox> */}
                           </MainHome>
                           <MainHome style={{ marginBottom: '30px' }}>
                             <div>
@@ -243,7 +252,12 @@ export default function Home() {
                             </div>
                           </MainHome>
                         </div>
-                        <div style={{ cursor: 'pointer' }}>
+                        <div
+                          onClick={() => {
+                            setPick(!pick), setTeam(!team);
+                          }}
+                          style={{ cursor: 'pointer' }}
+                        >
                           <Image
                             width={'62px'}
                             height={'62px'}
@@ -301,7 +315,12 @@ export default function Home() {
                             {/* <InputBox>hello</InputBox> */}
                           </MainHome>
                         </div>
-                        <div>
+                        <div
+                          onClick={() => {
+                            setTeam(!team), setEvent(!event);
+                          }}
+                          style={{ cursor: 'pointer' }}
+                        >
                           <Image
                             width={'62px'}
                             height={'62px'}
@@ -356,7 +375,12 @@ export default function Home() {
                             {/* <InputBox>hello</InputBox> */}
                           </MainHome>
                         </div>
-                        <div>
+                        <div
+                          style={{ cursor: 'pointer' }}
+                          onClick={() => {
+                            setEvent(!event), setFrame(!frame);
+                          }}
+                        >
                           <Image
                             width={'62px'}
                             height={'62px'}
@@ -388,7 +412,11 @@ export default function Home() {
                             </div>
                           </MainHome>
                         </div>
-                        <div>
+                        <div
+                          onClick={() => {
+                            setFrame(false), setFinal(true);
+                          }}
+                        >
                           <Image
                             width={'62px'}
                             height={'62px'}
@@ -405,39 +433,101 @@ export default function Home() {
               </BoxHomeWrapper>
             </Box>
           )}
+          {final && (
+            <Box width={'60%'} height='100%' title='Pick the Player/Team'>
+              <BoxHomeWrapper>
+                <CenterItems>
+                  <H1> YOUR BET IS SET !</H1>
+                  <Spacer />
 
-          <Box width={'20%'} height={'100%'} title='hello'>
-            <CardBox
-              chat='11'
-              discription='is watching the game'
-              number='48'
-              percentage='💒 Marry me tommy!'
-              name='Kinera'
-              points='20'
-              time='12'
-            />
+                  <Image src='/assets/frame.png' />
 
-            <hr />
-            <Spacer />
+                  <Spacer />
+                  <H1>Add your wager and sumbit your bet for others to take</H1>
+                  <Spacer />
+                  <P style={{ color: '#BCFE01' }}>
+                    Money will only be taken out of your account if someone
+                    takes your bet.
+                  </P>
+                </CenterItems>
+              </BoxHomeWrapper>
+            </Box>
+          )}
 
-            <CardBox
-              chat='11'
-              discription='is watching the game'
-              number='48'
-              percentage='💒 Marry me tommy!'
-              name='Kinera'
-              points='20'
-              time='12'
-            />
-          </Box>
-          {/* <InputBox width='60%'>
-            <H1>Heloo</H1>
-            <H1>Heloo</H1>
-          </InputBox>
-          <InputBox>
-            <H1>Heloo</H1>
-            <H1>Heloo</H1>
-          </InputBox> */}
+          {/* sidebox */}
+          {bet && (
+            <Box width={'20%'} height={'100%'} title='hello'>
+              <CardBox
+                chat='11'
+                discription='is watching the game'
+                number='48'
+                percentage='💒 Marry me tommy!'
+                name='Kinera'
+                points='20'
+                time='12'
+              />
+
+              <hr />
+              <Spacer />
+
+              <CardBox
+                chat='11'
+                discription='is watching the game'
+                number='48'
+                percentage='💒 Marry me tommy!'
+                name='Kinera'
+                points='20'
+                time='12'
+              />
+            </Box>
+          )}
+          {/* sidebox */}
+          {pick && <Box width={'20%'} height={'100%'} title='hello'></Box>}
+          {team && <Box width={'20%'} height={'100%'} title='hello'></Box>}
+          {event && <Box width={'20%'} height={'100%'} title='hello'></Box>}
+          {frame && <Box width={'20%'} height={'100%'} title='hello'></Box>}
+
+          {final && (
+            <Box width={'25%'} height='100%' title='Pick the Player/Team'>
+              <BoxHomeWrapper>
+                <CenterItems>
+                  <H1 style={{ fontSize: '18px' }}>NHL: MONTREAL CANADIAL</H1>
+                  <Spacer />
+                  <H1 style={{ fontSize: '18px', opacity: 0.6 }}>
+                    Brendan Gallagher will have 1 Goal Scored in the 3rd Period.
+                  </H1>
+                  <Spacer />
+                  <BoxHome>
+                    <H1>WAGER</H1>
+                    <H1 style={{ color: '#CEF458' }}>60.00$</H1>
+                  </BoxHome>
+                  <Spacer />
+                  <BoxHome>
+                    <BorderBox>
+                      <P>$5</P>
+                    </BorderBox>{' '}
+                    <BorderBox>
+                      <P>$10</P>
+                    </BorderBox>{' '}
+                    <BorderBox>
+                      <P>$20</P>
+                    </BorderBox>{' '}
+                    <BorderBox>
+                      <P style={{ fontSize: '12px' }}>CUSTOM</P>
+                    </BorderBox>
+                  </BoxHome>
+                  <Spacer />
+                  <hr style={{ backgroundColor: '#CEF458' }} />
+                  <Spacer />
+                  <BorderBox>
+                    <P> Share with: Live group</P>
+                  </BorderBox>
+                  <Spacer />
+                  <Button>Sumbit Bet</Button>
+                </CenterItems>
+              </BoxHomeWrapper>
+            </Box>
+          )}
         </MainHome>
       </Container>
     </Wrapper>
