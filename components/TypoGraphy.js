@@ -13,7 +13,7 @@ export const H1 = styled.h1`
     css`
       text-transform: uppercase;
       font-weight: 700;
-      font-size: 24px;
+      font-size: ${(props) => (props.size ? `${props.size}px` : '24px')};
       line-height: 29px;
     `}
     ${(props) =>
@@ -33,6 +33,7 @@ export const P = styled.p`
 export const H2 = styled.h2`
   font-size: ${(props) => (props.font ? props.font : '16px')};
   color: white;
+
   ${(props) =>
     props.feature &&
     css`
@@ -57,4 +58,5 @@ export const H3 = styled.h3`
       font-size: 18px;
       line-height: 22px;
     `}
+
 `;
