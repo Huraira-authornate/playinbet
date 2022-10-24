@@ -64,9 +64,9 @@ const match = [
 
 export default function Home() {
   const [mounted, setMounted] = useState(false);
-  const [bet, setBet] = useState(false);
+  const [bet, setBet] = useState(true);
   const [pick, setPick] = useState(false);
-  const [team, setTeam] = useState(true);
+  const [team, setTeam] = useState(false);
   const [event, setEvent] = useState(false);
   const [frame, setFrame] = useState(false);
   const [final, setFinal] = useState(false);
