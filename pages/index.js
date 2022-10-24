@@ -14,9 +14,13 @@ import { Sidebar } from '../components/Sidebar';
 import Spacer from '../components/Spacer';
 import { Box } from '../components/Box';
 import { InputBox } from '../components/InputBox';
+
+
+import { CardBox } from '../components/Card';
+
 import { H1, H3, P, H2 } from '../components/TypoGraphy';
 import { useState } from 'react';
-import { HorizontalBar } from '../components/HorizintalBar';
+
 const menu = [
   { text: 'Featured' },
   {
@@ -403,7 +407,28 @@ export default function Home() {
           )}
 
           <Box width={'20%'} height={'100%'} title='hello'>
-            hello{' '}
+            <CardBox
+              chat='11'
+              discription='is watching the game'
+              number='48'
+              percentage='💒 Marry me tommy!'
+              name='Kinera'
+              points='20'
+              time='12'
+            />
+
+            <hr />
+            <Spacer />
+
+            <CardBox
+              chat='11'
+              discription='is watching the game'
+              number='48'
+              percentage='💒 Marry me tommy!'
+              name='Kinera'
+              points='20'
+              time='12'
+            />
           </Box>
           {/* <InputBox width='60%'>
             <H1>Heloo</H1>
